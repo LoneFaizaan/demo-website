@@ -1,0 +1,377 @@
+.gemini-chat-container {
+    margin-top: 2.5rem;
+    margin-bottom: 2.5rem;
+    background: #f9fbfd;
+    border-radius: 18px;
+    box-shadow: 0 6px 32px rgba(44,62,80,0.10);
+    padding: 2rem 2rem 1.5rem 2rem;
+    max-width: 900px;
+    width: 100%;
+    overflow: hidden;
+    transition: max-height 0.7s cubic-bezier(.4,0,.2,1), box-shadow 0.3s;
+    max-height: 120px;
+    position: relative;
+}
+.gemini-chat-container.expanding {
+    box-shadow: 0 10px 40px rgba(44,62,80,0.13);
+}
+.gemini-form {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.2rem;
+}
+.gemini-form input[type="text"] {
+    flex: 1;
+    padding: 0.7rem 1.2rem;
+    border-radius: 999px;
+    border: 1.5px solid #b2bec3;
+    font-size: 1rem;
+    background: #fff;
+    outline: none;
+    transition: border 0.2s, box-shadow 0.2s;
+    box-shadow: 0 1px 4px rgba(44,62,80,0.04);
+}
+.gemini-form input[type="text"]:focus {
+    border-color: #2980b9;
+    box-shadow: 0 2px 8px rgba(41,128,185,0.10);
+}
+.gemini-form button {
+    padding: 0.7rem 1.2rem;
+    border: none;
+    border-radius: 999px;
+    background: #2980b9;
+    color: #fff;
+    font-size: 1.08rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(41,128,185,0.10);
+    transition: background 0.2s, box-shadow 0.2s;
+}
+.gemini-form button:hover {
+    background: #1abc9c;
+    box-shadow: 0 4px 16px rgba(41,128,185,0.13);
+}
+.gemini-response {
+    font-size: 1.08rem;
+    color: #34495e;
+    min-height: 1.5rem;
+    word-break: break-word;
+    line-height: 1.7;
+    margin-top: 0.5rem;
+    transition: color 0.3s;
+}
+.search-full-width {
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 1rem;
+    font-size: 1.08rem;
+    min-width: 0;
+}
+.filters-row {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    width: 100%;
+}
+.filters-row select {
+    flex: 1 1 160px;
+    min-width: 120px;
+    max-width: 220px;
+}
+@media (max-width: 700px) {
+    .filters-row {
+        flex-direction: column;
+        gap: 0.7rem;
+    }
+    .filters-row select {
+        max-width: 100%;
+    }
+    .search-full-width {
+        font-size: 1rem;
+    }
+}
+.filters select option {
+    border-radius: 16px;
+    background: #f7fafd;
+    color: #2c3e50;
+    padding: 0.7rem 1.4rem;
+    font-size: 1rem;
+}
+
+/* For Webkit browsers (Chrome, Safari) */
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    .filters select {
+        border-radius: 999px;
+    }
+    .filters select option {
+        border-radius: 16px;
+        background: #f7fafd;
+        color: #2c3e50;
+    }
+}
+
+/* For Firefox */
+@-moz-document url-prefix() {
+    .filters select {
+        border-radius: 999px;
+    }
+    .filters select option {
+        border-radius: 16px;
+        background: #f7fafd;
+        color: #2c3e50;
+    }
+}
+/* Get ID & PASSKEY Button */
+.get-id-btn {
+    margin-top: 1.2rem;
+    padding: 0.7rem 1.2rem;
+    border: none;
+    border-radius: 6px;
+    background: #2980b9;
+    color: #fff;
+    font-size: 1.08rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(41,128,185,0.10);
+    transition: background 0.2s, box-shadow 0.2s;
+}
+.get-id-btn:hover {
+    background: #1abc9c;
+    box-shadow: 0 4px 16px rgba(41,128,185,0.13);
+}
+.admin-extra {
+    display: flex;
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s, border 0.2s;
+}
+.login-btn svg {
+    display: block;
+    margin-right: 0.2rem;
+}
+.login-btn.admin-login svg {
+    stroke: #2c3e50;
+}
+.login-btn.contributor-login svg {
+    stroke: #2980b9;
+}
+.login-btn:hover {
+    background: #2980b9;
+    color: #fff;
+    border: 1.5px solid #2980b9;
+    box-shadow: 0 4px 16px rgba(41,128,185,0.13);
+}
+.login-btn:hover svg {
+    stroke: #fff;
+}
+@media (max-width: 700px) {
+    .login-section {
+        top: 0.5rem;
+        left: 0.5rem;
+        gap: 0.4rem;
+    }
+    .login-btn {
+        font-size: 0.98rem;
+        padding: 0.35rem 0.7rem 0.35rem 0.5rem;
+    }
+    .login-btn svg {
+        width: 18px;
+        height: 18px;
+    }
+}
+/* Contact Developer Section */
+.contact-developer {
+    margin: 2.5rem auto 0 auto;
+    padding: 1.2rem 0 1.2rem 0;
+    max-width: 950px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(44,62,80,0.06);
+    text-align: center;
+}
+.contact-info.minimal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.1rem;
+    flex-wrap: wrap;
+    padding: 0.2rem 0;
+}
+.contact-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: #f4f8fb;
+    box-shadow: 0 1px 4px rgba(41,128,185,0.07);
+    transition: background 0.2s, box-shadow 0.2s;
+    margin: 0 2px;
+}
+.contact-icon:hover {
+    background: #2980b9;
+    box-shadow: 0 2px 12px rgba(41,128,185,0.13);
+}
+.contact-icon svg {
+    display: block;
+    margin: auto;
+    stroke: #2980b9;
+    transition: stroke 0.2s;
+}
+.contact-icon:hover svg {
+    stroke: #fff;
+}
+@media (max-width: 700px) {
+    .contact-developer {
+        padding: 0.7rem 0 0.7rem 0;
+    }
+    .contact-info.minimal {
+        gap: 0.5rem;
+    }
+    .contact-icon {
+        width: 32px;
+        height: 32px;
+    }
+    .contact-icon svg {
+        width: 18px;
+        height: 18px;
+    }
+}
+/* Beautiful, modern CSS for Cluster University Srinagar - Previous Year Papers */
+
+
+body {
+    font-family: 'SF Pro Display', 'San Francisco', 'Segoe UI', 'Roboto', Arial, sans-serif;
+    margin: 0;
+    min-height: 100vh;
+    background: #fff;
+    transition: background 0.6s cubic-bezier(.4,0,.2,1);
+}
+
+@media (max-width: 700px) {
+    body {
+    }
+}
+
+header {
+    background: linear-gradient(90deg, #2c3e50 60%, #2980b9 100%);
+    color: #fff;
+    padding: 2rem 0 1.5rem 0;
+    box-shadow: 0 2px 12px rgba(44,62,80,0.08);
+    text-align: center;
+}
+
+h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    letter-spacing: 1px;
+    font-weight: 700;
+}
+
+.container {
+    max-width: 950px;
+    margin: 2.5rem auto;
+    background: #fff;
+    padding: 2.5rem 2rem;
+    border-radius: 18px;
+    box-shadow: 0 6px 32px rgba(44,62,80,0.10);
+    transition: box-shadow 0.2s;
+}
+.container:hover {
+    box-shadow: 0 10px 40px rgba(44,62,80,0.13);
+}
+
+.filters {
+    display: flex;
+    gap: 1.2rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+    justify-content: center;
+}
+
+
+.filters input, .filters select {
+    padding: 0.7rem 1.4rem;
+    border: none;
+    border-radius: 999px;
+    font-size: 1rem;
+    outline: none;
+    background: #f7fafd;
+    box-shadow: 0 2px 8px rgba(44,62,80,0.10);
+    transition: box-shadow 0.35s cubic-bezier(.4,0,.2,1), background 0.35s cubic-bezier(.4,0,.2,1);
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    margin-right: 0.1rem;
+}
+.filters input:focus, .filters select:focus,
+.filters input:hover, .filters select:hover {
+    background: #eaf6fb;
+    box-shadow: 0 4px 16px rgba(41,128,185,0.13);
+}
+.filters input::placeholder {
+    color: #b2bec3;
+    opacity: 1;
+}
+
+/* Table Styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    background: #f9fbfd;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(44,62,80,0.04);
+}
+th, td {
+    padding: 1rem 0.75rem;
+    text-align: left;
+    font-size: 1.05rem;
+}
+th {
+    background: linear-gradient(90deg, #eaf6fb 60%, #d6e6f2 100%);
+    color: #2c3e50;
+    font-weight: 600;
+    border-bottom: 2px solid #d6e6f2;
+}
+td {
+    border-bottom: 1px solid #e3eaf1;
+    color: #34495e;
+}
+tr:last-child td {
+    border-bottom: none;
+}
+
+a {
+    color: #2980b9;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+a:hover {
+    color: #1abc9c;
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 700px) {
+    .container {
+        padding: 1.2rem 0.5rem;
+    }
+    th, td {
+        padding: 0.7rem 0.4rem;
+        font-size: 0.98rem;
+    }
+    h1 {
+        font-size: 1.5rem;
+    }
+}
+@media (max-width: 500px) {
+    .filters {
+        flex-direction: column;
+        gap: 0.7rem;
+    }
+    .container {
+        padding: 0.7rem 0.2rem;
+    }
+}
