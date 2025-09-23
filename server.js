@@ -8,7 +8,7 @@ const fetch = require('node-fetch');
 
 const app = express();
 const PORT = 3001; // You can change this port if needed
-const GEMINI_API_KEY = 'AIzaSyAUD436Mi06WX5hk2VMqtjF2x2OCVS6qd4';
+const GEMINI_API_KEY = '';
 
 app.use(cors());
 app.use(express.json());
@@ -41,3 +41,4 @@ app.post('/api/gemini', async (req, res) => {
 app.listen(PORT, () => {
   console.log(`Gemini proxy server running on http://localhost:${PORT}`);
 });
+
