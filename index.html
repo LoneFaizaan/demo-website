@@ -1,44 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <head>
-    <link rel="stylesheet" href="styles.css">
-</head>
     <meta charset="UTF-8">
     <title>Cluster University Srinagar - Previous Year Papers</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-        body { font-family: Arial, sans-serif; margin: 0; background: #f4f6f8; }
-        header { background: #2c3e50; color: #fff; padding: 1rem 2rem; }
-        h1 { margin: 0; font-size: 2rem; }
-        .container { max-width: 900px; margin: 2rem auto; background: #fff; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);}
-        .filters { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
-        .filters input, .filters select { padding: 0.5rem; border: 1px solid #ccc; border-radius: 4px; }
-        table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
-        th, td { padding: 0.75rem; border-bottom: 1px solid #eee; text-align: left; }
-        th { background: #f0f3f6; }
-        @media (max-width: 600px) {
-            .filters { flex-direction: column; }
-            .container { padding: 1rem; }
-        }
-    </style>
+    <link rel="stylesheet" href="apple-style.css">
 </head>
 <body>
     <header>
-        <h1>Previous Year Papers - Cluster University Srinagar</h1>
+        <h1>Cluster University Srinagar</h1>
     </header>
     <div class="container">
-        <div class="filters">
-            <input type="text" id="searchInput" placeholder="Search by paper title..." class="search-full-width">
-            <div class="filters-row">
+        <div class="filter-container">
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Search by paper title..." class="search-full-width">
+            </div>
+            <div class="filters">
                 <select id="collegeFilter">
-                    <option value="">College</option>
-                    <option value="Amar Singh College">Amar Singh College</option>
-                    <option value="Sri pratap College">SP College</option>
-                    <option value="Women's College">Women's College</option>
-                    <option value="Islamia College">Islamia College</option>
-                    <option value="GDC Bemina">GDC Bemina</option>
-                </select>
+                <option value="">College</option>
+                <option value="Amar Singh College">Amar Singh College</option>
+                <option value="Sri pratap College">SP College</option>
+                <option value="Women's College">Women's College</option>
+                <option value="Islamia College">Islamia College</option>
+                <option value="GDC Bemina">GDC Bemina</option>
+            </select>
                 <select id="subjectFilter">
                     <option value="">Subject</option>
                     <option value="Mathematics">Mathematics</option>
@@ -75,56 +60,56 @@
                 </select>
             </div>
         </div>
-        <table>
-            <thead>
-                <tr>
-                    <th>Paper Title</th>
-                    <th>Subject</th>
-                    <th>College</th>
-                    <th>Year</th>
-                    <th>Download</th>
-                </tr>
-            </thead>
-            <tbody id="papersTable">
-                <!-- Sample Data -->
-                <tr>
-                    <td>Mathematics I</td>
-                    <td>Mathematics</td>
-                    <td>Amar Singh College</td>
-                    <td>2023</td>
-                    <td><a href="#" download>Download</a></td>
-                </tr>
-                <tr>
-                    <td>Physics II</td>
-                    <td>Physics</td>
-                    <td>SP College</td>
-                    <td>2022</td>
-                    <td><a href="#" download>Download</a></td>
-                </tr>
-                <tr>
-                    <td>English Literature</td>
-                    <td>English</td>
-                    <td>Women's College</td>
-                    <td>2021</td>
-                    <td><a href="#" download>Download</a></td>
-                </tr>
-                <tr>
-                    <td>Organic Chemistry</td>
-                    <td>Chemistry</td>
-                    <td>Islamia College</td>
-                    <td>2023</td>
-                    <td><a href="#" download>Download</a></td>
-                </tr>
-                <tr>
-                    <td>Programming Fundamentals</td>
-                    <td>Computer Science</td>
-                    <td>GDC Bemina</td>
-                    <td>2020</td>
-                    <td><a href="#" download>Download</a></td>
-                </tr>
-                <!-- Add more rows as needed -->
-            </tbody>
-        </table>
+        <div class="papers-table-container">
+            <table class="papers-table">
+                <thead>
+                    <tr>
+                        <th>Paper Title</th>
+                        <th>Subject</th>
+                        <th>College</th>
+                        <th>Year</th>
+                        <th>Download</th>
+                    </tr>
+                </thead>
+                <tbody id="papersTable">
+                    <tr>
+                        <td>Linear Algebra</td>
+                        <td>Mathematics</td>
+                        <td>Amar Singh College</td>
+                        <td>2025</td>
+                        <td><a href="#" class="download-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Download</a></td>
+                    </tr>
+                    <tr>
+                        <td>Quantum Mechanics</td>
+                        <td>Physics</td>
+                        <td>SP College</td>
+                        <td>2024</td>
+                        <td><a href="#" class="download-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Download</a></td>
+                    </tr>
+                    <tr>
+                        <td>Advanced Computing</td>
+                        <td>Computer Science</td>
+                        <td>Women's College</td>
+                        <td>2025</td>
+                        <td><a href="#" class="download-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Download</a></td>
+                    </tr>
+                    <tr>
+                        <td>Business Analytics</td>
+                        <td>Management</td>
+                        <td>Islamia College</td>
+                        <td>2024</td>
+                        <td><a href="#" class="download-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Download</a></td>
+                    </tr>
+                    <tr>
+                        <td>Environmental Studies</td>
+                        <td>Geography</td>
+                        <td>GDC Bemina</td>
+                        <td>2025</td>
+                        <td><a href="#" class="download-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Download</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
     <div class="container gemini-chat-container" id="geminiChatContainer">
         <h2 style="margin-top:0;">Ask Gemini (AI Assistant)</h2>
@@ -134,22 +119,22 @@
         </form>
         <div id="geminiResponse" class="gemini-response"></div>
     </div>
-    <footer class="contact-developer">
-        <div class="contact-info minimal">
-            <a href="faizanlone098@gmail.com" class="contact-icon" title="Email">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2980b9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22,6 12,13 2,6"/></svg>
+    <div class="contact-developer">
+        <div class="contact-info">
+            <a href="mailto:faizanlone098@gmail.com" class="contact-icon" title="Email">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22,6 12,13 2,6"/></svg>
             </a>
             <a href="https://github.com/lonefaizaan" class="contact-icon" target="_blank" title="GitHub">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2980b9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.48 2.87 8.28 6.84 9.63.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.7-2.78.62-3.37-1.36-3.37-1.36-.45-1.18-1.1-1.5-1.1-1.5-.9-.63.07-.62.07-.62 1 .07 1.53 1.05 1.53 1.05.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.7 0 0 .84-.28 2.75 1.05A9.38 9.38 0 0 1 12 6.84c.85.004 1.71.12 2.51.35 1.91-1.33 2.75-1.05 2.75-1.05.55 1.4.2 2.44.1 2.7.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.81-4.57 5.07.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .27.18.58.69.48A10.01 10.01 0 0 0 22 12.26C22 6.58 17.52 2 12 2z"/></svg>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
             </a>
             <a href="https://instagram.com/faizaan.24" class="contact-icon" target="_blank" title="Instagram">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2980b9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.5" y2="6.5"/></svg>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.5" y2="6.5"/></svg>
             </a>
             <a href="https://linkedin.com/in/lonefaizaan" class="contact-icon" target="_blank" title="LinkedIn">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2980b9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><line x1="8" y1="11" x2="8" y2="16"/><line x1="8" y1="8" x2="8" y2="8"/><line x1="12" y1="11" x2="12" y2="16"/><path d="M16 16v-3a2 2 0 0 0-4 0"/></svg>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><line x1="8" y1="11" x2="8" y2="16"/><line x1="8" y1="8" x2="8" y2="8"/><line x1="12" y1="11" x2="12" y2="16"/><path d="M16 16v-3a2 2 0 0 0-4 0"/></svg>
             </a>
         </div>
-    </footer>
+    </div>
     <script>
         // Gemini Chat Integration
         const geminiForm = document.getElementById('geminiForm');
@@ -158,27 +143,35 @@
         const geminiChatContainer = document.getElementById('geminiChatContainer');
         let geminiAnimating = false;
         async function askGemini(question) {
-            // Replace with your actual Gemini API endpoint and key
-            const apiKey = 'AIzaSyAUD436Mi06WX5hk2VMqtjF2x2OCVS6qd4';
-            const endpoint = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=' + apiKey;
-            const body = {
-                contents: [{ parts: [{ text: question }]}]
-            };
-                // Call local Gemini proxy server
-                try {
-                    const res = await fetch('http://localhost:3001/api/gemini', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ question })
-                    });
-                    const data = await res.json();
-                    if (data.answer) {
-                        return data.answer;
-                    } else {
-                        return 'Sorry, no answer received.';
-                    }
-                } catch (e) {
-                    return 'Error contacting Gemini API.';
+            console.log('Sending question to server:', question);
+            try {
+                const res = await fetch('http://localhost:3001/api/gemini', {
+                    method: 'POST',
+                    headers: { 
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({ question })
+                });
+                
+                console.log('Server response status:', res.status);
+                
+                if (!res.ok) {
+                    throw new Error(`HTTP error! status: ${res.status}`);
+                }
+                
+                const data = await res.json();
+                console.log('Server response data:', data);
+                
+                if (data.answer) {
+                    return data.answer;
+                } else {
+                    console.log('No answer in response:', data);
+                    return 'Sorry, no answer received.';
+                }
+            } catch (e) {
+                console.error('Detailed error:', e);
+                return `Error contacting local Gemini API server (${e.message}). Make sure the server is running on port 3001.`;
             }
         }
         function animateGeminiResponse(text) {
@@ -211,81 +204,78 @@
                 animateGeminiResponse(answer);
             });
         }
-        // Random knowledge quotes for search box
-        const knowledgeQuotes = [
-            "Education is the most powerful weapon which you can use to change the world. – Nelson Mandela",
-            "The beautiful thing about learning is that no one can take it away from you. – B.B. King",
-            "An investment in knowledge pays the best interest. – Benjamin Franklin",
-            "The only true wisdom is in knowing you know nothing. – Socrates",
-            "Live as if you were to die tomorrow. Learn as if you were to live forever. – Mahatma Gandhi",
-            "Knowledge speaks, but wisdom listens. – Jimi Hendrix",
-            "The roots of education are bitter, but the fruit is sweet. – Aristotle",
-            "Learning never exhausts the mind. – Leonardo da Vinci"
+        // College cards interaction
+        const collegeCards = document.querySelectorAll('.college-card');
+        collegeCards.forEach(card => {
+            card.addEventListener('click', () => {
+                card.classList.toggle('active');
+            });
+        });
+
+        // Random inspirational quotes for search box
+        const quotes = [
+            "Discover your academic journey",
+            "Find your perfect department",
+            "Explore academic excellence",
+            "Shape your future here",
+            "Begin your college adventure",
+            "Find your academic home",
+            "Unlock your potential"
         ];
-        const searchInput = document.getElementById('searchInput');
         function setRandomQuote() {
-            const quote = knowledgeQuotes[Math.floor(Math.random() * knowledgeQuotes.length)];
+            const quote = quotes[Math.floor(Math.random() * quotes.length)];
             searchInput.placeholder = quote;
         }
         setRandomQuote();
         setInterval(setRandomQuote, 5000);
-        // Contributor Get ID & PASSKEY logic
-        const getIdPasskeySection = document.getElementById('getIdPasskeySection');
-        const getIdPasskeyBtn = document.getElementById('getIdPasskeyBtn');
-        const idPasskeyRequestMsg = document.getElementById('idPasskeyRequestMsg');
-        // Show Get ID & PASSKEY only for contributor login
-        contributorLoginBtn.addEventListener('click', () => {
-            getIdPasskeySection.style.display = 'block';
-        });
-        adminLoginBtn.addEventListener('click', () => {
-            getIdPasskeySection.style.display = 'none';
-        });
-        if (getIdPasskeyBtn) {
-            getIdPasskeyBtn.addEventListener('click', function() {
-                idPasskeyRequestMsg.style.display = 'block';
-                setTimeout(() => {
-                    idPasskeyRequestMsg.style.display = 'none';
-                }, 2000);
-            });
-        }
-        // Show admin extra fields on upload if admin
-        const adminExtraFields = document.getElementById('adminExtraFields');
-        function showAdminUploadFields(isAdmin) {
-            if (adminExtraFields) adminExtraFields.style.display = isAdmin ? 'block' : 'none';
-        }
-        // On login, show upload and admin fields if admin
-        loginForm.addEventListener('submit', function(e) {
         const table = document.getElementById('papersTable');
         const rows = Array.from(table.getElementsByTagName('tr'));
 
-        function filterTable() {
-            const search = searchInput.value.toLowerCase();
-            const college = collegeFilter.value;
-            const subject = subjectFilter.value;
+        function filterContent() {
+            const searchTerm = searchInput.value.toLowerCase();
             const year = yearFilter.value;
+            const semester = semesterFilter.value;
+            const course = courseTypeFilter.value;
 
+            // Filter table rows
+            const rows = Array.from(document.querySelectorAll('.papers-table tbody tr'));
             rows.forEach(row => {
                 const cells = row.getElementsByTagName('td');
                 const title = cells[0].textContent.toLowerCase();
-                const subj = cells[1].textContent;
-                const coll = cells[2].textContent;
-                const yr = cells[3].textContent;
+                const subject = cells[1].textContent.toLowerCase();
+                const college = cells[2].textContent.toLowerCase();
+                const rowYear = cells[3].textContent;
 
                 let show = true;
-                if (search && !title.includes(search) && !subj.toLowerCase().includes(search)) show = false;
-                if (college && coll !== college) show = false;
-                if (subject && subj !== subject) show = false;
-                if (year && yr !== year) show = false;
+                if (searchTerm && !title.includes(searchTerm) && 
+                    !subject.includes(searchTerm) && 
+                    !college.includes(searchTerm)) {
+                    show = false;
+                }
+                if (year && rowYear !== year) show = false;
 
                 row.style.display = show ? '' : 'none';
             });
+
+            // Filter college cards
+            const cards = document.querySelectorAll('.college-card');
+            cards.forEach(card => {
+                const collegeName = card.querySelector('.college-name').textContent.toLowerCase();
+                const departments = Array.from(card.querySelectorAll('.department-item'))
+                    .map(dept => dept.textContent.toLowerCase());
+
+                const matchesSearch = !searchTerm || 
+                    collegeName.includes(searchTerm) || 
+                    departments.some(dept => dept.includes(searchTerm));
+
+                card.style.display = matchesSearch ? 'block' : 'none';
+            });
         }
 
-        searchInput.addEventListener('input', filterTable);
-        collegeFilter.addEventListener('change', filterTable);
-        subjectFilter.addEventListener('change', filterTable);
-        yearFilter.addEventListener('change', filterTable);
-
+        searchInput.addEventListener('input', filterContent);
+        yearFilter.addEventListener('change', filterContent);
+        semesterFilter.addEventListener('change', filterContent);
+        courseTypeFilter.addEventListener('change', filterContent);
     </script>
 </body>
 </html>
