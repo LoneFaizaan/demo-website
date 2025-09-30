@@ -7,13 +7,59 @@
     <link rel="stylesheet" href="apple-style.css">
 </head>
 <body>
+    <!-- Left Advertisement -->
+    <div class="ad-container left">
+        <div class="ad-space" id="leftAd">
+            <p class="ad-placeholder">Advertisement Space</p>
+        </div>
+        <button class="upload-ad" onclick="openAdUpload('left')">Upload Advertisement</button>
+        <div class="ad-controls">
+            <button onclick="removeAd('left')">Remove</button>
+            <button onclick="rotateAd('left')">Rotate</button>
+        </div>
+    </div>
+
+    <!-- Right Advertisement -->
+    <div class="ad-container right">
+        <div class="ad-space" id="rightAd">
+            <p class="ad-placeholder">Advertisement Space</p>
+        </div>
+        <button class="upload-ad" onclick="openAdUpload('right')">Upload Advertisement</button>
+        <div class="ad-controls">
+            <button onclick="removeAd('right')">Remove</button>
+            <button onclick="rotateAd('right')">Rotate</button>
+        </div>
+    </div>
+
+    <!-- Ad Upload Modal -->
+    <div id="adUploadModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Upload Advertisement</h3>
+                <button class="close-modal" onclick="closeAdUpload()">&times;</button>
+            </div>
+            <form class="upload-form" id="adUploadForm">
+                <div class="upload-area" onclick="triggerFileInput()">
+                    <div class="upload-icon">📸</div>
+                    <p>Click to upload image or drag and drop</p>
+                    <input type="file" id="adImage" hidden accept="image/*">
+                </div>
+                <input type="text" id="adLink" placeholder="Enter advertisement link (optional)" class="ad-link-input">
+                <button type="submit" class="upload-ad">Upload</button>
+            </form>
+        </div>
+    </div>
+
     <header>
+        <div class="liquid-blob blob1"></div>
+        <div class="liquid-blob blob2"></div>
+        <div class="liquid-blob blob3"></div>
         <h1>Cluster University Srinagar</h1>
     </header>
     <div class="container">
         <div class="filter-container">
             <div class="search-bar">
-                <input type="text" id="searchInput" placeholder="Search by paper title..." class="search-full-width">
+                <input type="text" id="searchInput" placeholder="Search papers, colleges, or departments..." class="search-full-width">
             </div>
             <div class="filters">
                 <select id="collegeFilter">
@@ -64,7 +110,7 @@
             <table class="papers-table">
                 <thead>
                     <tr>
-                        <th>Paper Title</th>
+                        <th>Semester</th>
                         <th>Subject</th>
                         <th>College</th>
                         <th>Year</th>
@@ -73,137 +119,231 @@
                 </thead>
                 <tbody id="papersTable">
                     <tr>
-                        <td>Linear Algebra</td>
+                        <td>Semester 1</td>
                         <td>Mathematics</td>
-                        <td>Amar Singh College</td>
-                        <td>2025</td>
+                        <td><button class="college-expand-btn">Amar Singh College</button></td>
+                        <td><button class="year-expand-btn">2025</button></td>
                         <td><a href="#" class="download-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Download</a></td>
                     </tr>
+                    <tr class="expanded-content college-content" data-college="amar-singh" style="display: none;">
+                        <td colspan="5">
+                            <div class="college-details">
+                                <h3>Amar Singh College</h3>
+                                <p><strong>Established:</strong> 1942</p>
+                                <p><strong>Location:</strong> Gogji Bagh, Srinagar</p>
+                                <p><strong>Departments:</strong> Science, Arts, Commerce</p>
+                                <p><strong>Notable Features:</strong> Heritage Building, Research Centers</p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="expanded-content year-content" data-year="2025" style="display: none;">
+                        <td colspan="5">
+                            <div class="year-details">
+                                <h3>2025 Papers</h3>
+                                <p><strong>Total Papers:</strong> 45</p>
+                                <p><strong>Subjects Covered:</strong> Mathematics, Physics, Chemistry, Computer Science</p>
+                                <p><strong>Latest Updates:</strong> New format implemented with detailed solutions</p>
+                            </div>
+                        </td>
+                    </tr>
+
                     <tr>
-                        <td>Quantum Mechanics</td>
+                        <td>Semester 4</td>
                         <td>Physics</td>
-                        <td>SP College</td>
-                        <td>2024</td>
+                        <td><button class="college-expand-btn">SP College</button></td>
+                        <td><button class="year-expand-btn">2024</button></td>
                         <td><a href="#" class="download-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Download</a></td>
                     </tr>
+                    <tr class="expanded-content college-content" data-college="sp-college" style="display: none;">
+                        <td colspan="5">
+                            <div class="college-details">
+                                <h3>SP College</h3>
+                                <p><strong>Established:</strong> 1905</p>
+                                <p><strong>Location:</strong> MA Road, Srinagar</p>
+                                <p><strong>Departments:</strong> Science, Commerce</p>
+                                <p><strong>Notable Features:</strong> Historic Institution, Science Labs</p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="expanded-content year-content" data-year="2024" style="display: none;">
+                        <td colspan="5">
+                            <div class="year-details">
+                                <h3>2024 Papers</h3>
+                                <p><strong>Total Papers:</strong> 38</p>
+                                <p><strong>Subjects Covered:</strong> Physics, Chemistry, Mathematics</p>
+                                <p><strong>Latest Updates:</strong> Digital copies available with solutions</p>
+                            </div>
+                        </td>
+                    </tr>
+
                     <tr>
-                        <td>Advanced Computing</td>
+                        <td>Semester 5</td>
                         <td>Computer Science</td>
-                        <td>Women's College</td>
-                        <td>2025</td>
+                        <td><button class="college-expand-btn">Women's College</button></td>
+                        <td><button class="year-expand-btn">2025</button></td>
                         <td><a href="#" class="download-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Download</a></td>
                     </tr>
+                    <tr class="expanded-content college-content" data-college="womens-college" style="display: none;">
+                        <td colspan="5">
+                            <div class="college-details">
+                                <h3>Women's College</h3>
+                                <p><strong>Established:</strong> 1950</p>
+                                <p><strong>Location:</strong> M.A. Road, Srinagar</p>
+                                <p><strong>Departments:</strong> Arts, Science, Commerce</p>
+                                <p><strong>Notable Features:</strong> Women's Education Excellence Center</p>
+                            </div>
+                        </td>
+                    </tr>
+                    
                     <tr>
-                        <td>Business Analytics</td>
+                        <td>Semester 6</td>
                         <td>Management</td>
-                        <td>Islamia College</td>
-                        <td>2024</td>
+                        <td><button class="college-expand-btn">Islamia College</button></td>
+                        <td><button class="year-expand-btn">2024</button></td>
                         <td><a href="#" class="download-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Download</a></td>
                     </tr>
+                    
                     <tr>
-                        <td>Environmental Studies</td>
+                        <td>Semester 2</td>
                         <td>Geography</td>
-                        <td>GDC Bemina</td>
-                        <td>2025</td>
+                        <td><button class="college-expand-btn">GDC Bemina</button></td>
+                        <td><button class="year-expand-btn">2025</button></td>
                         <td><a href="#" class="download-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Download</a></td>
                     </tr>
                 </tbody>
             </table>
         </div>
     </div>
-    <div class="container gemini-chat-container" id="geminiChatContainer">
-        <h2 style="margin-top:0;">Ask Gemini (AI Assistant)</h2>
-        <form id="geminiForm" class="gemini-form">
-            <input type="text" id="geminiInput" placeholder="Ask anything about papers, subjects, or more..." required autocomplete="off">
-            <button type="submit">Ask</button>
-        </form>
-        <div id="geminiResponse" class="gemini-response"></div>
-    </div>
-    <div class="contact-developer">
-        <div class="contact-info">
-            <a href="mailto:faizanlone098@gmail.com" class="contact-icon" title="Email">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22,6 12,13 2,6"/></svg>
-            </a>
-            <a href="https://github.com/lonefaizaan" class="contact-icon" target="_blank" title="GitHub">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-            </a>
-            <a href="https://instagram.com/faizaan.24" class="contact-icon" target="_blank" title="Instagram">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.5" y2="6.5"/></svg>
-            </a>
-            <a href="https://linkedin.com/in/lonefaizaan" class="contact-icon" target="_blank" title="LinkedIn">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><line x1="8" y1="11" x2="8" y2="16"/><line x1="8" y1="8" x2="8" y2="8"/><line x1="12" y1="11" x2="12" y2="16"/><path d="M16 16v-3a2 2 0 0 0-4 0"/></svg>
-            </a>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="developer-info">
+                <p class="developed-by">Developed by Faizaan at S.P College Srinagar</p>
+                <div class="contact-info">
+                    <a href="mailto:faizanlone098@gmail.com" class="contact-icon" title="Email">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22,6 12,13 2,6"/></svg>
+                    </a>
+                    <a href="https://github.com/lonefaizaan" class="contact-icon" target="_blank" title="GitHub">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                    </a>
+                    <a href="https://instagram.com/faizaan.24" class="contact-icon" target="_blank" title="Instagram">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.5" y2="6.5"/></svg>
+                    </a>
+                    <a href="https://linkedin.com/in/lonefaizaan" class="contact-icon" target="_blank" title="LinkedIn">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><line x1="8" y1="11" x2="8" y2="16"/><line x1="8" y1="8" x2="8" y2="8"/><line x1="12" y1="11" x2="12" y2="16"/><path d="M16 16v-3a2 2 0 0 0-4 0"/></svg>
+                    </a>
+                </div>
+            </div>
         </div>
-    </div>
+    </footer>
     <script>
-        // Gemini Chat Integration
-        const geminiForm = document.getElementById('geminiForm');
-        const geminiInput = document.getElementById('geminiInput');
-        const geminiResponse = document.getElementById('geminiResponse');
-        const geminiChatContainer = document.getElementById('geminiChatContainer');
-        let geminiAnimating = false;
-        async function askGemini(question) {
-            console.log('Sending question to server:', question);
-            try {
-                const res = await fetch('http://localhost:3001/api/gemini', {
-                    method: 'POST',
-                    headers: { 
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json'
-                    },
-                    body: JSON.stringify({ question })
-                });
+        // Sorting functionality
+        function sortTable(columnIndex) {
+            const table = document.querySelector('.papers-table');
+            const tbody = table.querySelector('tbody');
+            const rows = Array.from(tbody.querySelectorAll('tr:not(.expanded-content)'));
+            const isAscending = table.querySelector('th:nth-child(' + (columnIndex + 1) + ')').classList.contains('asc');
+            
+            // Reset all headers
+            table.querySelectorAll('th').forEach(th => {
+                th.classList.remove('asc', 'desc');
+            });
+            
+            // Set current header sort state
+            const currentHeader = table.querySelector('th:nth-child(' + (columnIndex + 1) + ')');
+            currentHeader.classList.add(isAscending ? 'desc' : 'asc');
+
+            // Sort rows
+            rows.sort((a, b) => {
+                let aValue = a.cells[columnIndex].textContent.trim();
+                let bValue = b.cells[columnIndex].textContent.trim();
                 
-                console.log('Server response status:', res.status);
-                
-                if (!res.ok) {
-                    throw new Error(`HTTP error! status: ${res.status}`);
+                // Special handling for semester column
+                if (columnIndex === 0) {
+                    aValue = parseInt(aValue.match(/\d+/)[0]);
+                    bValue = parseInt(bValue.match(/\d+/)[0]);
+                    return isAscending ? bValue - aValue : aValue - bValue;
                 }
                 
-                const data = await res.json();
-                console.log('Server response data:', data);
+                // Special handling for year column
+                if (columnIndex === 3) {
+                    aValue = parseInt(aValue);
+                    bValue = parseInt(bValue);
+                    return isAscending ? bValue - aValue : aValue - bValue;
+                }
                 
-                if (data.answer) {
-                    return data.answer;
-                } else {
-                    console.log('No answer in response:', data);
-                    return 'Sorry, no answer received.';
-                }
-            } catch (e) {
-                console.error('Detailed error:', e);
-                return `Error contacting local Gemini API server (${e.message}). Make sure the server is running on port 3001.`;
-            }
-        }
-        function animateGeminiResponse(text) {
-            geminiResponse.innerHTML = '';
-            geminiChatContainer.classList.add('expanding');
-            let i = 0;
-            geminiAnimating = true;
-            function typeChar() {
-                if (i < text.length) {
-                    geminiResponse.innerHTML += text[i] === '\n' ? '<br>' : text[i];
-                    i++;
-                    geminiChatContainer.style.maxHeight = (geminiChatContainer.scrollHeight + 40) + 'px';
-                    setTimeout(typeChar, 12);
-                } else {
-                    geminiAnimating = false;
-                    geminiChatContainer.classList.remove('expanding');
-                }
-            }
-            typeChar();
-        }
-        if (geminiForm) {
-            geminiForm.addEventListener('submit', async function(e) {
-                e.preventDefault();
-                if (geminiAnimating) return;
-                geminiResponse.innerHTML = '<span style="color:#2980b9;">Thinking...</span>';
-                geminiChatContainer.style.maxHeight = '300px';
-                const question = geminiInput.value.trim();
-                geminiInput.value = '';
-                const answer = await askGemini(question);
-                animateGeminiResponse(answer);
+                // Default string comparison for other columns
+                return isAscending ? 
+                    bValue.localeCompare(aValue) : 
+                    aValue.localeCompare(bValue);
+            });
+
+            // Reorder rows in the table
+            rows.forEach(row => {
+                const expandedContent = Array.from(tbody.querySelectorAll(`tr.expanded-content[data-college="${row.querySelector('.college-expand-btn')?.textContent.trim().toLowerCase().replace(/\s+/g, '-')}"], tr.expanded-content[data-year="${row.querySelector('.year-expand-btn')?.textContent.trim()}"]`));
+                tbody.appendChild(row);
+                expandedContent.forEach(content => tbody.appendChild(content));
             });
         }
+
+        // Add click handlers to table headers
+        document.querySelectorAll('.papers-table th').forEach((th, index) => {
+            th.style.cursor = 'pointer';
+            th.addEventListener('click', () => sortTable(index));
+        });
+
+        // Handle expandable content
+        document.addEventListener('click', function(e) {
+            if (e.target.matches('.college-expand-btn, .year-expand-btn')) {
+                e.preventDefault();
+                const button = e.target;
+                const row = button.closest('tr');
+                const isCollege = button.classList.contains('college-expand-btn');
+                const type = isCollege ? 'college' : 'year';
+                const value = button.textContent.trim().toLowerCase().replace(/\s+/g, '-');
+                
+                // Toggle button active state
+                button.classList.toggle('active');
+                
+                // Find next row with expanded content
+                const expandedContent = row.nextElementSibling;
+                if (expandedContent && expandedContent.classList.contains('expanded-content')) {
+                    expandedContent.style.display = expandedContent.style.display === 'none' ? '' : 'none';
+                }
+                
+                // Close other expanded rows
+                const otherExpanded = document.querySelectorAll('.expanded-content');
+                otherExpanded.forEach(content => {
+                    if (content !== expandedContent) {
+                        content.style.display = 'none';
+                        // Reset other active buttons
+                        const otherButtons = document.querySelectorAll('.college-expand-btn.active, .year-expand-btn.active');
+                        otherButtons.forEach(btn => {
+                            if (btn !== button) {
+                                btn.classList.remove('active');
+                            }
+                        });
+                    }
+                });
+            }
+        });
+
+        // Original smooth scrolling for college and year links
+        document.addEventListener('click', function(e) {
+            if (e.target.matches('.college-link, .year-link, .learn-more-btn')) {
+                e.preventDefault();
+                const targetId = e.target.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            }
+        });
+
+
         // College cards interaction
         const collegeCards = document.querySelectorAll('.college-card');
         collegeCards.forEach(card => {
@@ -260,15 +400,36 @@
             // Filter college cards
             const cards = document.querySelectorAll('.college-card');
             cards.forEach(card => {
-                const collegeName = card.querySelector('.college-name').textContent.toLowerCase();
-                const departments = Array.from(card.querySelectorAll('.department-item'))
-                    .map(dept => dept.textContent.toLowerCase());
+                const collegeName = card.querySelector('h3').textContent.toLowerCase();
+                const collegeDesc = card.querySelector('p').textContent.toLowerCase();
 
                 const matchesSearch = !searchTerm || 
                     collegeName.includes(searchTerm) || 
-                    departments.some(dept => dept.includes(searchTerm));
+                    collegeDesc.includes(searchTerm);
 
                 card.style.display = matchesSearch ? 'block' : 'none';
+            });
+
+            // Filter college sections
+            const collegeSections = document.querySelectorAll('.college-detail-section');
+            collegeSections.forEach(section => {
+                const sectionTitle = section.querySelector('h2').textContent.toLowerCase();
+                const sectionContent = section.textContent.toLowerCase();
+
+                const matchesSearch = !searchTerm || 
+                    sectionTitle.includes(searchTerm) || 
+                    sectionContent.includes(searchTerm);
+
+                section.style.display = matchesSearch ? 'block' : 'none';
+            });
+
+            // Filter year sections
+            const yearSections = document.querySelectorAll('.year-section');
+            yearSections.forEach(section => {
+                const sectionYear = section.querySelector('h2').textContent.toLowerCase().match(/\d{4}/)?.[0];
+
+                const matchesSearch = !year || sectionYear === year;
+                section.style.display = matchesSearch ? 'block' : 'none';
             });
         }
 
@@ -276,6 +437,119 @@
         yearFilter.addEventListener('change', filterContent);
         semesterFilter.addEventListener('change', filterContent);
         courseTypeFilter.addEventListener('change', filterContent);
+
+        // Advertisement Management
+        let currentAdSide = null;
+        const modal = document.getElementById('adUploadModal');
+        const adForm = document.getElementById('adUploadForm');
+        const fileInput = document.getElementById('adImage');
+
+        function openAdUpload(side) {
+            currentAdSide = side;
+            modal.style.display = 'flex';
+        }
+
+        function closeAdUpload() {
+            modal.style.display = 'none';
+            currentAdSide = null;
+        }
+
+        function triggerFileInput() {
+            fileInput.click();
+        }
+
+        // Handle drag and drop
+        const uploadArea = document.querySelector('.upload-area');
+        
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            uploadArea.addEventListener(eventName, preventDefaults, false);
+        });
+
+        function preventDefaults(e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+
+        ['dragenter', 'dragover'].forEach(eventName => {
+            uploadArea.addEventListener(eventName, highlight, false);
+        });
+
+        ['dragleave', 'drop'].forEach(eventName => {
+            uploadArea.addEventListener(eventName, unhighlight, false);
+        });
+
+        function highlight(e) {
+            uploadArea.classList.add('highlight');
+        }
+
+        function unhighlight(e) {
+            uploadArea.classList.remove('highlight');
+        }
+
+        uploadArea.addEventListener('drop', handleDrop, false);
+
+        function handleDrop(e) {
+            const dt = e.dataTransfer;
+            const files = dt.files;
+            handleFiles(files);
+        }
+
+        function handleFiles(files) {
+            if (files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    updateAdSpace(currentAdSide, e.target.result);
+                }
+                reader.readAsDataURL(files[0]);
+            }
+        }
+
+        // Handle form submission
+        adForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const file = fileInput.files[0];
+            const link = document.getElementById('adLink').value;
+            
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    updateAdSpace(currentAdSide, e.target.result, link);
+                }
+                reader.readAsDataURL(file);
+            }
+            
+            closeAdUpload();
+        });
+
+        function updateAdSpace(side, imageUrl, link = '') {
+            const adSpace = document.getElementById(side + 'Ad');
+            adSpace.innerHTML = `
+                ${link ? `<a href="${link}" target="_blank">` : ''}
+                <img src="${imageUrl}" alt="Advertisement">
+                ${link ? '</a>' : ''}
+            `;
+        }
+
+        function removeAd(side) {
+            const adSpace = document.getElementById(side + 'Ad');
+            adSpace.innerHTML = '<p class="ad-placeholder">Advertisement Space</p>';
+        }
+
+        function rotateAd(side) {
+            const adSpace = document.getElementById(side + 'Ad');
+            const img = adSpace.querySelector('img');
+            if (img) {
+                const currentRotation = (parseInt(img.style.transform?.match(/-?\d+/) || 0) + 90) % 360;
+                img.style.transform = `rotate(${currentRotation}deg)`;
+            }
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                closeAdUpload();
+            }
+        }
     </script>
 </body>
 </html>
